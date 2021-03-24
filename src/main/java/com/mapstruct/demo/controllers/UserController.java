@@ -17,11 +17,18 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
     private MapStructMapper mapstructMapper;
 
-    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    public UserController(
+            MapStructMapper mapstructMapper,
+            UserRepository userRepository
+    ) {
+        this.mapstructMapper = mapstructMapper;
+        this.userRepository = userRepository;
+    }
 
     @PostMapping()
     public ResponseEntity<Void> create(

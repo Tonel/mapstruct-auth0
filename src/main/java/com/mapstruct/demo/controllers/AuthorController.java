@@ -16,11 +16,18 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorController {
 
-    @Autowired
     private MapStructMapper mapstructMapper;
 
-    @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    public AuthorController(
+            MapStructMapper mapstructMapper,
+            AuthorRepository authorRepository
+    ) {
+        this.mapstructMapper = mapstructMapper;
+        this.authorRepository = authorRepository;
+    }
 
     @GetMapping()
     public ResponseEntity<List<AuthorAllDto>> getAll() {
